@@ -1,1 +1,1 @@
-include ':app', ':string_struct'
+include ':app', ':string_struct', ':sort_algorithm'
