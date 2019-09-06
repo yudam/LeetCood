@@ -1,5 +1,8 @@
 package com.mdy.string_struct;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Title: 整数转罗马数字
  * Date: 2019/9/5
@@ -9,7 +12,9 @@ public class IntToRoman {
 
     public static void main(String[] args) {
 
-        System.out.println(intToRoman(1994));
+        // System.out.println(intToRoman(1994));
+
+        System.out.println(romanToInt("MCMXCIV"));
     }
 
     /**
@@ -37,5 +42,52 @@ public class IntToRoman {
         }
         return stringBuffer.toString();
     }
+
+
+    /**
+     * 从后往前遍历，若后一位小于前一位，表明是字符组成的数字，则加上该双字符表示数字，并减去后一位表示的数字。
+     * 若后一位不小于前一位，则加上前一位的数字。
+     * <p>
+     * start：前一位数字， next 后一位数字   res总数
+     * <p>
+     * next小于start，下一次肯定是next>=start,
+     * 所以这两个罗马数字表示的值num分两次加入：第一次加入两数的值（start-next）-下一次要加入的值next
+     * 下一次比较  直接加入next。
+     * 总的公式为：start-next-next+next=start-next
+     */
+    public static int romanToInt(String s) {
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("I", 1);
+        map.put("IV", 4);
+        map.put("V", 5);
+        map.put("IX", 9);
+        map.put("X", 10);
+        map.put("XL", 40);
+        map.put("L", 50);
+        map.put("XC", 90);
+        map.put("C", 100);
+        map.put("CD", 400);
+        map.put("D", 500);
+        map.put("CM", 900);
+        map.put("M", 1000);
+
+        int res = 0;
+        int index = s.length() - 1;
+        while (index >= 0) {
+            int start = map.get(s.substring(index, index + 1));
+            if (index == 0) return res + start;
+            int next = map.get(s.substring(index - 1, index));
+            if (next < start) {
+                res += (start - next - next);
+            } else {
+                res += start;
+            }
+            index--;
+        }
+
+        return res;
+    }
+
 
 }
