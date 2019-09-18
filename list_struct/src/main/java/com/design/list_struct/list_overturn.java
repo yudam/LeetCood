@@ -43,6 +43,9 @@ public class list_overturn {
     }
 
 
+    /**
+     * 按组逆序遍历单链表
+     */
     public static ListNode overturnGroup(ListNode head, int k) {
         if (k == 1) return head;
         ListNode result = overturnGroup(head.next, --k);
@@ -53,7 +56,7 @@ public class list_overturn {
 
 
     /**
-     * K 个一组翻转链表
+     * K 个一组翻转链表  3 2 1 6 5 4 7 8
      * 思路：1.按K个一组进行划分为每一个小组，通过递归方法，分别处理每一个小组，不满足K和的小组直接返回。
      * 2.对满足K个小组的链表进行翻转。
      * 3.把每一个递归并翻转的小组拼接在外层递归的后面。
@@ -71,6 +74,10 @@ public class list_overturn {
         return newHead;
     }
 
+    /**
+     * K 个一组 倒序翻转链表
+     * 1 2 5 4 3 8 7 6
+     */
     public static ListNode array_overturn1(ListNode head, int k) {
         ListNode result = array_overturn(overturn(head), k);
 
