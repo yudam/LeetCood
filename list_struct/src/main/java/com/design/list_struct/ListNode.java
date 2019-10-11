@@ -17,4 +17,5 @@ public class ListNode {
         this.val = data;
         this.next = next;
     }
+
 }
