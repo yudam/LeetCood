@@ -1,5 +1,10 @@
 package com.design.list_struct;
 
+import java.io.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * User: maodayu
  * Date: 2019/10/11
@@ -7,14 +12,20 @@ package com.design.list_struct;
  */
 public class Test {
 
+
     public static void main(String[] args) {
 
-        System.out.println("tag_2.0.1");
+        Calendar calendar = Calendar.getInstance();
 
-        //what
+        calendar.set(2019,Calendar.DECEMBER,30);
+
+        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+
+        System.out.println("2019-12-31    "+dateFormat.format(calendar.getTime()));
+
+
 
     }
 
-    public static void recursive() {}
 
 }

@@ -28,4 +28,5 @@ dependencies {
     implementation project(path: ':string_struct')
     implementation project(path: ':sort_algorithm')
     implementation project(path: ':list_struct')
+    implementation project(path: ':TreeLib')
 }
