@@ -1,38 +1,33 @@
 package com.mdy.treelib;
 
-import sun.java2d.opengl.CGLSurfaceData.CGLVSyncOffScreenSurfaceData;
-
 public class MyClass {
+
     public static void main(String[] args) {
 
-        /*int[] number={12,5,2,37,8,10,15};
-        BinarySearchTree bsTree=new BinarySearchTree();
-        for(int i=0;i<number.length;i++){
-            bsTree.add(number[i]);
-        }
 
-        System.out.println("前序遍历-----");
-        bsTree.preNode();
+        System.out.println("num="+tableSizeFor(100000)*0.75f);
 
 
-        System.out.println("\n删除后前序遍历-----");
-        bsTree.remove(5);
-        bsTree.preNode();
-*/
-
-
-        TestNode testNode=new TestNode();
-        testNode.val=11;
-
-        TestNode testNode1=new TestNode();
-        testNode1.val=100;
-        testNode.mTestNode=testNode1;
-
-        System.out.println(testNode.toString());
-
-        testNode.test(testNode);
-        System.out.println(testNode.toString());
-
+        System.out.println("hash="+hash("mao"));
     }
 
+
+    static final int MAXIMUM_CAPACITY = 1 << 30;
+
+    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    }
+
+
+
+    static final int hash(Object key) {
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    }
 }

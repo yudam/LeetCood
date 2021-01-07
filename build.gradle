@@ -1,14 +1,24 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+//buildscript 用于配置项目的核心依赖
 buildscript {
     repositories {
         google()
         jcenter()
-        
+
+
+//        可以设置私有仓库地址，
+//        maven {
+//            url ""
+//            credentials{
+//                username = ""
+//                password = ""
+//            }
+//        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-        
+        classpath 'com.android.tools.build:gradle:4.0.1'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -18,10 +28,51 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+
+
+
+this.getAllproject()  //获取所有的Project
+this.getSubproject()  //获取子Project
+this.getPt()   //获取该Project的父类
+this.getRootPt() // 获取跟
+
+def getAllproject() {
+
+    println("<==============>")
+    println "===build project start==="
+    println "<==============>"
+
+    getAllprojects().eachWithIndex { Project entry, int i ->
+        if (i == 0) {
+            println "Root Project is $entry"
+        } else {
+            println "child project is $entry"
+        }
+
+    }
+}
+
+def getSubproject() {
+    getSubprojects().each {
+        Project project ->
+            println "子 Project is $project"
+    }
+}
+
+def getPt() {
+    println "当前 Project 的 parent is " + getParent()
+
+}
+
+def getRootPt() {
+    def projectname = getRootProject().name
+    println "root project is $projectname"
 }

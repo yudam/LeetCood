@@ -4,9 +4,28 @@ public class MyClass {
 
     public static void main(String[] args) {
 
-        int[] nums = new int[]{5, 2, 8, 3, 1, 7, 6, 4};
-        mergeSort(nums);
-        looger(nums);
+//        int[] nums = new int[]{5, 2, 8, 3, 1, 7, 6, 4};
+//        mergeSort(nums);
+//        looger(nums);
+
+        final StringBuilder stringBuilder =new StringBuilder();
+        for(int i=0;i<10;i++){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for(int i=0;i<1000;i++){
+                        stringBuilder.append("a");
+                    }
+                }
+            }).start();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("len="+stringBuilder.length());
     }
 
     /**

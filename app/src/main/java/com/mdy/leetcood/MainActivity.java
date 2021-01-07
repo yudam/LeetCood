@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayDeque;
+
 public class MainActivity extends AppCompatActivity {
 
     Handler handler = new Handler() {
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+
     }
 
     public void btn1(View view) {

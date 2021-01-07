@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="array_lib" target="1.7" />
+      <module name="LeetCood.app" target="1.8" />
+      <module name="list_struct" target="1.7" />
+      <module name="sort_algorithm" target="1.7" />
+      <module name="string_struct" target="1.7" />
+      <module name="TreeLib" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

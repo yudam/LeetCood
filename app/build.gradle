@@ -22,6 +22,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation project(path: ':array_lib')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -29,4 +30,40 @@ dependencies {
     implementation project(path: ':sort_algorithm')
     implementation project(path: ':list_struct')
     implementation project(path: ':TreeLib')
+}
+
+this.getPt()
+
+def getPt(){
+    println "当前 Project 的 parent is ${getParent()}"
+}
+
+task First_Task{
+    ext.good = "mdy"
+}
+
+
+task Last_Task{
+
+    doFirst {
+
+        println First_Task.name
+    }
+
+    doLast {
+        println "I am is $First_Task.good"
+    }
+}
+
+task Third_Task(dependsOn:[First_Task,Last_Task]){
+
+
+    doLast {
+        println "这是 Third_Task"
+    }
+}
+
+task Task4{
+//    shouldRunAfter Third_Task
+//    mustRunAfter(Third_Task)
 }
