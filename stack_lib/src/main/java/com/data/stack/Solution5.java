@@ -1,9 +1,6 @@
 package com.data.stack;
 
 import java.util.Stack;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import sun.security.krb5.internal.Ticket;
 
 /**
  * User: maodayu

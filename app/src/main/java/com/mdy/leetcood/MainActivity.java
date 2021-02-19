@@ -1,43 +1,46 @@
 package com.mdy.leetcood;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            Log.i("MDY", "handleMessage");
-        }
-    };
+    ExecutorService fixThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.test);
+        fixThread = new ThreadPoolExecutor(3, 10, 20,
+                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>());
+        for (int i = 0; i < 100; i++) {
+            fixThread.execute(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i("MDY", "run:" + Thread.currentThread().getName());
+                }
+            });
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void btn1(View view) {
-
-        new TestThread().start();
+        fixThread.shutdown();
     }
 
-    class TestThread extends Thread {
-        @Override
-        public void run() {
-            super.run();
-            Log.i("MDY", "run---1");
-            Looper.prepare();
-            Log.i("MDY", "run---2");
-            Looper.loop();
-            Log.i("MDY", "run---3");
-        }
-    }
+    /**
+     * 队尾插入，队头删除，add pop
+     */
 }
