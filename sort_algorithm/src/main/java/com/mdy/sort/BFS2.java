@@ -21,6 +21,9 @@ public class BFS2 {
 
         Node node = connect(node1);
         System.out.println(node);
+
+
+
     }
 
     /**

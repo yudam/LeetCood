@@ -23,10 +23,8 @@ public class Offer32 {
         if (root != null) {
             deque.add(root);
         }
-        int count = 0;
         while (deque.size() > 0) {
             List<Integer> preList = new LinkedList<>();
-            List<Integer> lastList = new LinkedList<>();
             int size = deque.size();
             for (int i = size - 1; i >= 0; i--) {
                 TreeNode node = deque.pop();
@@ -34,16 +32,7 @@ public class Offer32 {
                 if (node.left != null) deque.add(node.left);
                 if (node.right != null) deque.add(node.right);
             }
-
-            if(count%2 !=0){
-                for(int i=preList.size()-1;i>=0;i--) {
-                    lastList.add(preList.get(i));
-                }
-                arrList.add(lastList);
-            }else{
-                arrList.add(preList);
-            }
-            count++;
+            arrList.add(preList);
         }
         return arrList;
     }

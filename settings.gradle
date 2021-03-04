@@ -1,2 +1,3 @@
+include ':Tree'
 include ':stack_lib'
 include ':app', ':string_struct', ':sort_algorithm', ':list_struct'
