@@ -19,8 +19,9 @@ public class Solution1 {
     }
 
     public void dfs(TreeNode root) {
-        if (root == null || k <= 0) return;
+        if (root == null) return;
         dfs(root.right);
+        if (k == 0) return;
         if (--k == 0) {
             result = root.val;
             return;
